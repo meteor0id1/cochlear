@@ -1,0 +1,168 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcqr4x0yrvs0q"]
+
+[ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_4stqg"]
+
+[sub_resource type="Gradient" id="Gradient_0tlie"]
+colors = PackedColorArray(0.180817, 0.279757, 0.925781, 1, 0.165344, 0.638846, 0.984375, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_430vl"]
+gradient = SubResource("Gradient_0tlie")
+fill_from = Vector2(1, 1)
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_4stqg")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Question" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.0
+offset_top = -347.0
+offset_right = 263.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_font_sizes/font_size = 60
+text = "How many peas are in a pod?"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="AnswerButtons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -275.0
+offset_top = -421.0
+offset_right = 275.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Button1" type="TextureButton" parent="AnswerButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_next = NodePath("../Button2")
+focus_previous = NodePath("../Button3")
+texture_normal = SubResource("GradientTexture2D_430vl")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="AnswerButtons/Button1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Button1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="TextureButton" parent="AnswerButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Button4")
+focus_neighbor_bottom = NodePath("../Button3")
+focus_next = NodePath("../Button3")
+focus_previous = NodePath("../Button4")
+texture_normal = SubResource("GradientTexture2D_430vl")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="AnswerButtons/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Button2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button3" type="TextureButton" parent="AnswerButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_next = NodePath("../Button4")
+focus_previous = NodePath("../Button2")
+texture_normal = SubResource("GradientTexture2D_430vl")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="AnswerButtons/Button3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Button3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button4" type="TextureButton" parent="AnswerButtons"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_next = NodePath(".")
+focus_previous = NodePath("../Button2")
+texture_normal = SubResource("GradientTexture2D_430vl")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="AnswerButtons/Button4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Button3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "<"
+
+[node name="ScoreLabel" type="Label" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = ">"
