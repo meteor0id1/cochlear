@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://drwprlbn4myol"]
+[gd_scene load_steps=5 format=3 uid="uid://drwprlbn4myol"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_ed41h"]
+[ext_resource type="Script" path="res://Scenes/Buttons.gd" id="2_st20o"]
 
 [sub_resource type="Gradient" id="Gradient_oamos"]
 colors = PackedColorArray(0.180817, 0.279757, 0.925781, 1, 0.165344, 0.638846, 0.984375, 1)
@@ -60,6 +61,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
 alignment = 1
+script = ExtResource("2_st20o")
 
 [node name="StartButton" type="TextureButton" parent="Buttons"]
 layout_mode = 2
@@ -119,3 +121,5 @@ grow_vertical = 2
 text = "Button3"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Buttons/StartButton" to="Buttons" method="_on_start_button_pressed"]

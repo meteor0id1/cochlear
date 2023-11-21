@@ -1,12 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcqr4x0yrvs0q"]
+[gd_scene load_steps=9 format=3 uid="uid://dcqr4x0yrvs0q"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_4stqg"]
+[ext_resource type="Script" path="res://Scenes/Game.gd" id="2_0dx8o"]
+[ext_resource type="Script" path="res://Scenes/AnswerButtons.gd" id="2_vp7eb"]
+[ext_resource type="Script" path="res://Scenes/Header.gd" id="4_7g63k"]
+[ext_resource type="Texture2D" uid="uid://bdr0g46o75mqf" path="res://Art/NormalButtonTexture.tres" id="4_rv5h7"]
+[ext_resource type="Texture2D" uid="uid://b67oujw04ajns" path="res://Art/IncorrectButtonTexture.tres" id="5_0mopl"]
 
-[sub_resource type="Gradient" id="Gradient_0tlie"]
-colors = PackedColorArray(0.180817, 0.279757, 0.925781, 1, 0.165344, 0.638846, 0.984375, 1)
+[sub_resource type="Gradient" id="Gradient_3hbo5"]
+colors = PackedColorArray(0.140442, 0.691406, 0.355662, 1, 0.565236, 0.914063, 0.182098, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_430vl"]
-gradient = SubResource("Gradient_0tlie")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bg7tw"]
+gradient = SubResource("Gradient_3hbo5")
 fill_from = Vector2(1, 1)
 
 [node name="Game" type="Control"]
@@ -17,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_4stqg")
+script = ExtResource("2_0dx8o")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -26,7 +32,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Question" type="Label" parent="."]
+[node name="QuestionLabel" type="Label" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -60,13 +67,18 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
 alignment = 1
+script = ExtResource("2_vp7eb")
+buttons = [NodePath("Button1"), NodePath("Button2"), NodePath("Button3"), NodePath("Button4")]
+normal_button_texture = ExtResource("4_rv5h7")
+correct_button_texture = SubResource("GradientTexture2D_bg7tw")
+incorrect_button_texture = ExtResource("5_0mopl")
 
 [node name="Button1" type="TextureButton" parent="AnswerButtons"]
 layout_mode = 2
 size_flags_vertical = 3
 focus_next = NodePath("../Button2")
 focus_previous = NodePath("../Button3")
-texture_normal = SubResource("GradientTexture2D_430vl")
+texture_normal = ExtResource("4_rv5h7")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="AnswerButtons/Button1"]
@@ -87,7 +99,7 @@ focus_neighbor_top = NodePath("../Button4")
 focus_neighbor_bottom = NodePath("../Button3")
 focus_next = NodePath("../Button3")
 focus_previous = NodePath("../Button4")
-texture_normal = SubResource("GradientTexture2D_430vl")
+texture_normal = ExtResource("4_rv5h7")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="AnswerButtons/Button2"]
@@ -106,7 +118,7 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_next = NodePath("../Button4")
 focus_previous = NodePath("../Button2")
-texture_normal = SubResource("GradientTexture2D_430vl")
+texture_normal = ExtResource("4_rv5h7")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="AnswerButtons/Button3"]
@@ -125,7 +137,7 @@ layout_mode = 2
 size_flags_vertical = 3
 focus_next = NodePath(".")
 focus_previous = NodePath("../Button2")
-texture_normal = SubResource("GradientTexture2D_430vl")
+texture_normal = ExtResource("4_rv5h7")
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="AnswerButtons/Button4"]
@@ -135,34 +147,53 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Button3"
+text = "Button4"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="Header" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 80.0
 grow_horizontal = 2
+script = ExtResource("4_7g63k")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Header"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="PanelContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "<"
-
-[node name="ScoreLabel" type="Label" parent="PanelContainer/HBoxContainer"]
+[node name="BackButton" type="Button" parent="Header/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
-text = "1000"
+text = "<"
+alignment = 0
+
+[node name="ScoreLabel" type="Label" parent="Header/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 60
+text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button2" type="Button" parent="PanelContainer/HBoxContainer"]
+[node name="LivesLabel" type="Label" parent="Header/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
-text = ">"
+text = "<3 5"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="QuestionEndTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="show_answer" from="." to="AnswerButtons" method="show_answer"]
+[connection signal="update_button_texts" from="." to="AnswerButtons" method="_update_button_texts"]
+[connection signal="answer_button_pressed" from="AnswerButtons" to="." method="on_question_answered"]
+[connection signal="pressed" from="AnswerButtons/Button1" to="AnswerButtons" method="_on_button_1_pressed"]
+[connection signal="pressed" from="AnswerButtons/Button2" to="AnswerButtons" method="_on_button_2_pressed"]
+[connection signal="pressed" from="AnswerButtons/Button3" to="AnswerButtons" method="_on_button_3_pressed"]
+[connection signal="pressed" from="AnswerButtons/Button4" to="AnswerButtons" method="_on_button_4_pressed"]
+[connection signal="timeout" from="QuestionEndTimer" to="." method="_on_question_end_timer_timeout"]
