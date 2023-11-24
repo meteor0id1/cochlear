@@ -191,9 +191,12 @@ one_shot = true
 
 [connection signal="show_answer" from="." to="AnswerButtons" method="show_answer"]
 [connection signal="update_button_texts" from="." to="AnswerButtons" method="_update_button_texts"]
+[connection signal="update_lives" from="." to="Header" method="_on_game_update_lives"]
+[connection signal="update_score" from="." to="Header" method="_on_game_update_score"]
 [connection signal="answer_button_pressed" from="AnswerButtons" to="." method="on_question_answered"]
 [connection signal="pressed" from="AnswerButtons/Button1" to="AnswerButtons" method="_on_button_1_pressed"]
 [connection signal="pressed" from="AnswerButtons/Button2" to="AnswerButtons" method="_on_button_2_pressed"]
 [connection signal="pressed" from="AnswerButtons/Button3" to="AnswerButtons" method="_on_button_3_pressed"]
 [connection signal="pressed" from="AnswerButtons/Button4" to="AnswerButtons" method="_on_button_4_pressed"]
+[connection signal="pressed" from="Header/HBoxContainer/BackButton" to="Header" method="_on_back_button_pressed"]
 [connection signal="timeout" from="QuestionEndTimer" to="." method="_on_question_end_timer_timeout"]

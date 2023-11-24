@@ -3,6 +3,7 @@ extends Control
 signal update_button_texts(button_texts : Array)
 signal show_answer(answer_picked, right_answer)
 signal update_score(score : int)
+signal update_lives(lives : int)
 
 @onready var question_label = %QuestionLabel
 @onready var question_end_timer = $QuestionEndTimer
@@ -12,12 +13,14 @@ var json_as_text = FileAccess.get_file_as_string(file)
 var question_dict = JSON.parse_string(json_as_text)
 
 var score : int = 0
+var lives : int = 5
 var current_question : int
 var right_answer_button : int
 var question_debounce : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	update_score.emit(score)
 	pick_new_question()
 
 func pick_new_question():
@@ -51,8 +54,12 @@ func on_question_answered(choice):
 	if not question_debounce:
 		if choice == right_answer_button:
 			print("correct")
+			score += 10
+			update_score.emit(score)
 		else:
 			print("incorrect")
+			lives -= 1
+			update_lives.emit(lives)
 		
 		question_debounce = true
 		question_end_timer.start()

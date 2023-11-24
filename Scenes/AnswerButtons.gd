@@ -24,6 +24,5 @@ func _update_button_texts(button_texts):
 
 
 func show_answer(answer_picked, right_answer):
-	print("hello")
 	get_node(buttons[answer_picked]).texture_normal = incorrect_button_texture
 	get_node(buttons[right_answer]).texture_normal = correct_button_texture
