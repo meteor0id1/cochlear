@@ -16,7 +16,6 @@ func _on_button_3_pressed():
 func _on_button_4_pressed():
 	answer_button_pressed.emit(3)
 
-
 func _update_button_texts(button_texts):
 	for i in range(buttons.size()):
 		get_node(buttons[i]).get_node("Label").text = str(button_texts[i])
