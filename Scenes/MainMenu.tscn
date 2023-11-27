@@ -1,0 +1,159 @@
+[gd_scene load_steps=6 format=3 uid="uid://drwprlbn4myol"]
+
+[ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_xgca8"]
+[ext_resource type="Script" path="res://Scripts/Buttons.gd" id="2_gy3tw"]
+[ext_resource type="Texture2D" uid="uid://b55gdobtm2yqw" path="res://Art/Logo.png" id="3_1osa0"]
+
+[sub_resource type="Gradient" id="Gradient_oamos"]
+colors = PackedColorArray(0.180817, 0.279757, 0.925781, 1, 0.165344, 0.638846, 0.984375, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_sq4tk"]
+gradient = SubResource("Gradient_oamos")
+fill_from = Vector2(1, 1)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xgca8")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -269.0
+offset_right = 270.0
+offset_bottom = 311.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+script = ExtResource("2_gy3tw")
+
+[node name="StartButton" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_xgca8")
+texture_normal = SubResource("GradientTexture2D_sq4tk")
+stretch_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Buttons/StartButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xgca8")
+
+[node name="Label" type="Label" parent="Buttons/StartButton/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Practice"
+
+[node name="Button2" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = SubResource("GradientTexture2D_sq4tk")
+stretch_mode = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="Buttons/Button2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xgca8")
+
+[node name="Label" type="Label" parent="Buttons/Button2/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Test"
+
+[node name="Button4" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../StartButton")
+focus_previous = NodePath("../StartButton")
+texture_normal = SubResource("GradientTexture2D_sq4tk")
+stretch_mode = 0
+
+[node name="MarginContainer3" type="MarginContainer" parent="Buttons/Button4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xgca8")
+
+[node name="Label" type="Label" parent="Buttons/Button4/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Profile"
+
+[node name="Button5" type="TextureButton" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../StartButton")
+focus_previous = NodePath("../StartButton")
+texture_normal = SubResource("GradientTexture2D_sq4tk")
+stretch_mode = 0
+
+[node name="MarginContainer4" type="MarginContainer" parent="Buttons/Button5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xgca8")
+
+[node name="Label" type="Label" parent="Buttons/Button5/MarginContainer4"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Extras"
+
+[node name="Logo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -43.0
+offset_top = -480.0
+offset_right = 43.0
+offset_bottom = -349.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_1osa0")
+expand_mode = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+offset_left = 102.0
+offset_top = 668.0
+offset_right = 474.0
+offset_bottom = 668.0
+
+[connection signal="pressed" from="Buttons/StartButton" to="Buttons" method="_on_start_button_pressed"]

@@ -53,16 +53,11 @@ func pick_new_question():
 	update_button_texts.emit(button_texts)
 
 func check_if_unique(question_data, button_texts, i):
-	print(button_texts)
-	print("testing: " + button_texts[i])
-	
 	if str(button_texts[i]) == question_data.options[current_answer]:
-			print("failed on is answer")
 			return false
 	
 	for j in range(button_texts.size()):
 		if i != j and str(button_texts[i]) == str(button_texts[j]):
-			print("failed on exists already")
 			return false
 	
 	return true

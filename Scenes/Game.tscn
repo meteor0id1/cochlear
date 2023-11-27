@@ -5,9 +5,9 @@
 [ext_resource type="Script" path="res://Scripts/AnswerButtons.gd" id="3_u0lqf"]
 [ext_resource type="Texture2D" uid="uid://bdr0g46o75mqf" path="res://Art/NormalButtonTexture.tres" id="4_rv5h7"]
 [ext_resource type="Texture2D" uid="uid://b67oujw04ajns" path="res://Art/IncorrectButtonTexture.tres" id="5_0mopl"]
-[ext_resource type="Script" path="res://Scripts/Header.gd" id="6_nvt3a"]
+[ext_resource type="Script" path="res://Scripts/GameHeader.gd" id="6_exvgn"]
 [ext_resource type="Script" path="res://Scripts/GameOverPanel.gd" id="7_fp3hr"]
-[ext_resource type="Script" path="res://Scenes/AudioManager.gd" id="8_us1b2"]
+[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="8_u1n0p"]
 
 [sub_resource type="Gradient" id="Gradient_3hbo5"]
 colors = PackedColorArray(0.140442, 0.691406, 0.355662, 1, 0.565236, 0.914063, 0.182098, 1)
@@ -159,19 +159,24 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 80.0
 grow_horizontal = 2
-script = ExtResource("6_nvt3a")
+script = ExtResource("6_exvgn")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Header"]
+[node name="MarginContainer" type="MarginContainer" parent="Header"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="Header/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Header/MarginContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="Header/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
 text = "<"
 alignment = 0
 
-[node name="ScoreLabel" type="Label" parent="Header/HBoxContainer"]
+[node name="ScoreLabel" type="Label" parent="Header/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
@@ -179,7 +184,8 @@ text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LivesLabel" type="Label" parent="Header/HBoxContainer"]
+[node name="LivesLabel" type="Label" parent="Header/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 60
@@ -326,7 +332,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="AudioManager" type="Node" parent="."]
-script = ExtResource("8_us1b2")
+script = ExtResource("8_u1n0p")
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="AudioManager"]
 
@@ -341,7 +347,7 @@ script = ExtResource("8_us1b2")
 [connection signal="pressed" from="AnswerButtons/Button2" to="AnswerButtons" method="_on_button_2_pressed"]
 [connection signal="pressed" from="AnswerButtons/Button3" to="AnswerButtons" method="_on_button_3_pressed"]
 [connection signal="pressed" from="AnswerButtons/Button4" to="AnswerButtons" method="_on_button_4_pressed"]
-[connection signal="pressed" from="Header/HBoxContainer/BackButton" to="Header" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Header/MarginContainer/HBoxContainer/BackButton" to="Header" method="_on_back_button_pressed"]
 [connection signal="pressed" from="GameOverPanel/ContinueButton" to="GameOverPanel" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="GameOverPanel/RestartButton" to="GameOverPanel" method="_on_restart_button_pressed"]
 [connection signal="timeout" from="QuestionEndTimer" to="." method="_on_question_end_timer_timeout"]

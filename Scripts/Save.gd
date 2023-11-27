@@ -12,13 +12,9 @@ func save_data():
 	
 func load_data():
 	if FileAccess.file_exists(SAVE_FILE):
-		print("save found")
 		var file = FileAccess.open(SAVE_FILE, FileAccess.READ)
 		data = file.get_var()
-		print(data.high_score)
 	else:
-		print("making new save")
 		data = {
 			"high_score" = 0
 		}
-		print(data.high_score)
