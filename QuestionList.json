@@ -1,82 +1,56 @@
 [
 	{
 		"options": ["Bell", "Shell", "Tell", "Yell", "Well", "Swell", "Spell"],
-		"files": []
 	},
 	{
 		"options": ["Bright", "Night", "Flight", "Sight", "Tight", "Height"],
-		"files": []
 	},
 	{
 		"options": ["Song", "Long", "Strong", "Wrong", "Gong", "Pong"],
-		"files": []
 	},
 	{
 		"options": ["Play", "Day", "Ray", "Bay", "May", "Say", "Gray"],
-		"files": []
 	},
 	{
 		"options": ["Spin", "Bin", "Grin", "Thin", "Twin", "Win", "Pin"],
-		"files": []
 	},
 	{
 		"options": ["Joke", "Poke", "Smoke", "Choke", "Bloke", "Stroke"],
-		"files": []
 	},
 	{
 		"options": ["Tree", "Bee", "Key", "Glee", "Sea", "Free"],
-		"files": []
-	},
-	{
-		"options": ["Shell", "Bell", "Well", "Swell", "Tell", "Dwell"],
-		"files": []
-	},
-	{
-		"options": ["Spin", "Grin", "Bin", "Thin", "Win", "Hen"],
-		"files": []
 	},
 	{
 		"options": ["Snack", "Track", "Knack", "Black", "Back", "Stack"],
-		"files": []
 	},
 	{
 		"options": ["Glide", "Hide", "Guide", "Side", "Pride", "Tide"],
-		"files": []
 	},
 	{
 		"options": ["Moon", "Tune", "Spoon", "Soon", "Swoon", "Dune"],
-		"files": []
 	},
 	{
 		"options": ["Spark", "Dark", "Mark", "Bark", "Hark", "Shark"],
-		"files": []
 	},
 	{
 		"options": ["Quirk", "Jerk", "Smirk", "Perk", "Work", "Lurk"],
-		"files": []
 	},
 	{
 		"options": ["Cat", "Hat", "Sat", "Bat", "Mat", "Rat"],
-		"files": []
 	},
 	{
 		"options": ["Sun", "Fun", "Run", "Bun", "Done", "One"],
-		"files": []
 	},
 	{
 		"options": ["Blue", "Shoe", "True", "Clue", "Crew", "Through"],
-		"files": []
 	},
 	{
 		"options": ["Drum", "Thumb", "Plum", "Chum", "Sum", "Hum"],
-		"files": []
 	},
 	{
 		"options": ["Road", "Toad", "Load", "Code", "Mode"],
-		"files": []
 	},
 	{
 		"options": ["Ring", "Sing", "Swing", "King", "Wing", "Spring", "Bring"],
-		"files": []
 	},
 ]

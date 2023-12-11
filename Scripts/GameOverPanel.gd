@@ -16,7 +16,7 @@ func _on_game_over(final_score):
 	visible = true
 
 func _on_continue_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/Main Menu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 func _on_restart_button_pressed():
 	get_tree().reload_current_scene()

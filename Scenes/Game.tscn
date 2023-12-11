@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcqr4x0yrvs0q"]
+[gd_scene load_steps=14 format=3 uid="uid://dcqr4x0yrvs0q"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_4stqg"]
 [ext_resource type="Script" path="res://Scripts/Game.gd" id="2_ji3jl"]
 [ext_resource type="Script" path="res://Scripts/AnswerButtons.gd" id="3_u0lqf"]
+[ext_resource type="Texture2D" uid="uid://dga6wlgpdtf81" path="res://Art/Speaker.png" id="3_unkqt"]
 [ext_resource type="Texture2D" uid="uid://bdr0g46o75mqf" path="res://Art/NormalButtonTexture.tres" id="4_rv5h7"]
 [ext_resource type="Texture2D" uid="uid://b67oujw04ajns" path="res://Art/IncorrectButtonTexture.tres" id="5_0mopl"]
+[ext_resource type="PackedScene" uid="uid://bljn1ji7ne67m" path="res://Scenes/AnswerButton.tscn" id="5_m8kwy"]
 [ext_resource type="Script" path="res://Scripts/GameHeader.gd" id="6_exvgn"]
 [ext_resource type="Script" path="res://Scripts/GameOverPanel.gd" id="7_fp3hr"]
-[ext_resource type="Script" path="res://Scripts/AudioManager.gd" id="8_u1n0p"]
+[ext_resource type="Script" path="res://Scripts/IncorrectPanel.gd" id="9_wa2dr"]
 
 [sub_resource type="Gradient" id="Gradient_3hbo5"]
 colors = PackedColorArray(0.140442, 0.691406, 0.355662, 1, 0.565236, 0.914063, 0.182098, 1)
@@ -15,6 +17,9 @@ colors = PackedColorArray(0.140442, 0.691406, 0.355662, 1, 0.565236, 0.914063, 0
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_bg7tw"]
 gradient = SubResource("Gradient_3hbo5")
 fill_from = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t11a"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -37,121 +42,54 @@ grow_vertical = 2
 [node name="QuestionLabel" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -396.0
+offset_bottom = -270.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_font_sizes/font_size = 60
+text = "Choose the matching word"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PlayWordButton" type="TextureButton" parent="."]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -263.0
-offset_top = -347.0
-offset_right = 263.0
-offset_bottom = 65.0
+offset_left = -125.0
+offset_top = -220.0
+offset_right = 125.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
-theme_override_font_sizes/font_size = 60
-text = "How many peas are in a pod?"
-horizontal_alignment = 1
-autowrap_mode = 2
+texture_normal = ExtResource("3_unkqt")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="AnswerButtons" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -275.0
-offset_top = -421.0
-offset_right = 275.0
-offset_bottom = -14.0
+offset_top = -440.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 20
+theme_override_constants/separation = 12
 alignment = 1
 script = ExtResource("3_u0lqf")
-buttons = [NodePath("Button1"), NodePath("Button2"), NodePath("Button3"), NodePath("Button4")]
+button_template = ExtResource("5_m8kwy")
+buttons = [NodePath(""), NodePath(""), NodePath(""), NodePath("")]
 normal_button_texture = ExtResource("4_rv5h7")
 correct_button_texture = SubResource("GradientTexture2D_bg7tw")
 incorrect_button_texture = ExtResource("5_0mopl")
-
-[node name="Button1" type="TextureButton" parent="AnswerButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_next = NodePath("../Button2")
-focus_previous = NodePath("../Button3")
-texture_normal = ExtResource("4_rv5h7")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="AnswerButtons/Button1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Button1"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button2" type="TextureButton" parent="AnswerButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_neighbor_top = NodePath("../Button4")
-focus_neighbor_bottom = NodePath("../Button3")
-focus_next = NodePath("../Button3")
-focus_previous = NodePath("../Button4")
-texture_normal = ExtResource("4_rv5h7")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="AnswerButtons/Button2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Button2"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button3" type="TextureButton" parent="AnswerButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_next = NodePath("../Button4")
-focus_previous = NodePath("../Button2")
-texture_normal = ExtResource("4_rv5h7")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="AnswerButtons/Button3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Button3"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Button4" type="TextureButton" parent="AnswerButtons"]
-layout_mode = 2
-size_flags_vertical = 3
-focus_next = NodePath(".")
-focus_previous = NodePath("../Button2")
-texture_normal = ExtResource("4_rv5h7")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="AnswerButtons/Button4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Button4"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Header" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -273,10 +211,6 @@ offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../../AnswerButtons/Button4")
-focus_neighbor_bottom = NodePath("../../AnswerButtons/Button3")
-focus_next = NodePath("../../AnswerButtons/Button3")
-focus_previous = NodePath("../../AnswerButtons/Button4")
 texture_normal = ExtResource("4_rv5h7")
 stretch_mode = 0
 
@@ -307,10 +241,6 @@ offset_bottom = 242.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-focus_neighbor_top = NodePath("../../AnswerButtons/Button4")
-focus_neighbor_bottom = NodePath("../../AnswerButtons/Button3")
-focus_next = NodePath("../../AnswerButtons/Button3")
-focus_previous = NodePath("../../AnswerButtons/Button4")
 texture_normal = ExtResource("4_rv5h7")
 stretch_mode = 0
 
@@ -327,27 +257,138 @@ text = "Restart"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="IncorrectPanel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -444.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7t11a")
+script = ExtResource("9_wa2dr")
+
+[node name="MarginContainer" type="MarginContainer" parent="IncorrectPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IncorrectPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="IncorrectPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.137255, 0.572549, 0.996078, 1)
+theme_override_font_sizes/font_size = 60
+text = "Incorrect!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="IncorrectPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="WrongWordLabel" type="Label" parent="IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.243137, 0.243137, 1)
+text = "WrongWord"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/WrongWordLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+
+[node name="WrongWordButton" type="TextureButton" parent="IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/WrongWordLabel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_unkqt")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="Label2" type="Label" parent="IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.768627, 0.768627, 0.768627, 1)
+theme_override_font_sizes/font_size = 60
+text = "
+>"
+horizontal_alignment = 1
+
+[node name="RightWordLabel" type="Label" parent="IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.160784, 1, 0.25098, 1)
+text = "RightWord"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/RightWordLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+
+[node name="RightWordButton" type="TextureButton" parent="IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/RightWordLabel/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_unkqt")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="ContinueButton" type="TextureButton" parent="IncorrectPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_rv5h7")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="IncorrectPanel/MarginContainer/VBoxContainer/ContinueButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="QuestionEndTimer" type="Timer" parent="."]
-wait_time = 1.5
+unique_name_in_owner = true
+wait_time = 0.5
 one_shot = true
 
-[node name="AudioManager" type="Node" parent="."]
-script = ExtResource("8_u1n0p")
-
-[node name="AudioPlayer" type="AudioStreamPlayer" parent="AudioManager"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="game_over" from="." to="GameOverPanel" method="_on_game_over"]
-[connection signal="play_sound" from="." to="AudioManager" method="_play_sound"]
 [connection signal="show_answer" from="." to="AnswerButtons" method="show_answer"]
 [connection signal="update_button_texts" from="." to="AnswerButtons" method="_update_button_texts"]
+[connection signal="update_incorrect_panel" from="." to="IncorrectPanel" method="update_panel"]
 [connection signal="update_lives" from="." to="Header" method="_on_game_update_lives"]
 [connection signal="update_score" from="." to="Header" method="_on_game_update_score"]
+[connection signal="pressed" from="PlayWordButton" to="." method="_on_play_word_button_pressed"]
 [connection signal="answer_button_pressed" from="AnswerButtons" to="." method="on_question_answered"]
-[connection signal="pressed" from="AnswerButtons/Button1" to="AnswerButtons" method="_on_button_1_pressed"]
-[connection signal="pressed" from="AnswerButtons/Button2" to="AnswerButtons" method="_on_button_2_pressed"]
-[connection signal="pressed" from="AnswerButtons/Button3" to="AnswerButtons" method="_on_button_3_pressed"]
-[connection signal="pressed" from="AnswerButtons/Button4" to="AnswerButtons" method="_on_button_4_pressed"]
 [connection signal="pressed" from="Header/MarginContainer/HBoxContainer/BackButton" to="Header" method="_on_back_button_pressed"]
 [connection signal="pressed" from="GameOverPanel/ContinueButton" to="GameOverPanel" method="_on_continue_button_pressed"]
 [connection signal="pressed" from="GameOverPanel/RestartButton" to="GameOverPanel" method="_on_restart_button_pressed"]
+[connection signal="next_question" from="IncorrectPanel" to="." method="pick_new_question"]
+[connection signal="pressed" from="IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/WrongWordLabel/MarginContainer/WrongWordButton" to="IncorrectPanel" method="_on_wrong_word_button_pressed"]
+[connection signal="pressed" from="IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/RightWordLabel/MarginContainer/RightWordButton" to="IncorrectPanel" method="_on_right_word_button_pressed"]
+[connection signal="pressed" from="IncorrectPanel/MarginContainer/VBoxContainer/ContinueButton" to="IncorrectPanel" method="_on_continue_button_pressed"]
 [connection signal="timeout" from="QuestionEndTimer" to="." method="_on_question_end_timer_timeout"]

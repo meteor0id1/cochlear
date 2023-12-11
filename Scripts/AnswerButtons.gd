@@ -2,19 +2,25 @@ extends VBoxContainer
 
 signal answer_button_pressed(choice)
 
+@export var button_template : PackedScene
+
 @export var buttons : Array
 @export var normal_button_texture : Texture2D
 @export var correct_button_texture : Texture2D
 @export var incorrect_button_texture : Texture2D
 
-func _on_button_1_pressed():
-	answer_button_pressed.emit(0)
-func _on_button_2_pressed():
-	answer_button_pressed.emit(1)
-func _on_button_3_pressed():
-	answer_button_pressed.emit(2)
-func _on_button_4_pressed():
-	answer_button_pressed.emit(3)
+func _ready():
+	buttons.clear()
+	for i in range(Controller.difficulty):
+		var new_button = button_template.instantiate()
+		add_child(new_button)
+		new_button.name = "Button" + str(i + 1)
+		var function_to_connect = ""
+		new_button.pressed.connect(_on_answer_button_pressed.bind(i))
+		buttons.append(new_button.get_path())
+
+func _on_answer_button_pressed(button_number):
+	answer_button_pressed.emit(button_number)
 
 func _update_button_texts(button_texts):
 	for i in range(buttons.size()):

@@ -4,19 +4,18 @@ signal update_button_texts(button_texts : Array)
 signal show_answer(answer_picked, right_answer)
 signal update_score(score : int)
 signal update_lives(lives : int)
+signal update_incorrect_panel(right_answer : String, wrong_answer : String)
 signal game_over(final_score : int)
-signal play_sound(name : String)
 
 @export var correct_sound = "res://Audio/confirmation_001.ogg"
 @export var incorrect_sound = "res://Audio/error_006.ogg"
 
 @onready var question_label = %QuestionLabel
-@onready var question_end_timer = $QuestionEndTimer
+@onready var question_end_timer = %QuestionEndTimer
 @onready var game_over_panel = %GameOverPanel
+@onready var incorrect_panel = %IncorrectPanel
 
-
-var file = "res://QuestionList.json"
-var json_as_text = FileAccess.get_file_as_string(file)
+var json_as_text = FileAccess.get_file_as_string("res://QuestionList.json")
 var question_dict = JSON.parse_string(json_as_text)
 
 var score : int = 0
@@ -25,6 +24,7 @@ var current_question : int
 var current_answer : int
 var right_answer_button : int
 var question_debounce : bool = false
+var got_question_wrong : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,13 +32,16 @@ func _ready():
 	pick_new_question()
 
 func pick_new_question():
+	if lives <= 0:
+		game_over.emit(score)
+		return
+	
 	current_question = randi() % question_dict.size()
 	var question_data = question_dict[current_question]
 	current_answer = randi() % question_data.options.size()
-	question_label.text = str(current_question)
 	
 	var button_texts = []
-	for i in range(4):
+	for i in range(Controller.difficulty):
 		button_texts.append(question_data.options[randi() % question_data.options.size()])
 		var is_unique = false
 		is_unique = check_if_unique(question_data, button_texts, i)
@@ -47,9 +50,10 @@ func pick_new_question():
 			button_texts[i] = question_data.options[randi() % question_data.options.size()]
 			is_unique = check_if_unique(question_data, button_texts, i)
 	
-	right_answer_button = randi() % 4
+	right_answer_button = randi() % Controller.difficulty
 	button_texts[right_answer_button] = question_data.options[current_answer]
 	
+	AudioManager.play_word(question_dict[current_question].options[current_answer])
 	update_button_texts.emit(button_texts)
 
 func check_if_unique(question_data, button_texts, i):
@@ -66,21 +70,28 @@ func on_question_answered(choice):
 	if not question_debounce:
 		if choice == right_answer_button:
 			score += 10
-			play_sound.emit("Correct")
+			AudioManager.play_sound("Correct")
 			update_score.emit(score)
 		else:
 			lives -= 1
-			play_sound.emit("Incorrect")
+			got_question_wrong = true
+			update_incorrect_panel.emit(question_dict[current_question].options[current_answer], 
+											$AnswerButtons.get_node("Button" + str(choice + 1)).get_node("Label").text)
+			AudioManager.play_sound("Incorrect")
 			update_lives.emit(lives)
 		
 		question_debounce = true
-		question_end_timer.start()
 		show_answer.emit(choice, right_answer_button)
+		question_end_timer.start()
 
 func _on_question_end_timer_timeout():
 	question_debounce = false
-	if lives <= 0:
-		game_over.emit(score)
+	if got_question_wrong:
+		incorrect_panel.visible = true
 	else:
 		pick_new_question()
+	
+	got_question_wrong = false
 
+func _on_play_word_button_pressed():
+	AudioManager.play_word(question_dict[current_question].options[current_answer])
