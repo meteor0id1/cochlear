@@ -3,8 +3,8 @@ extends PanelContainer
 signal play_word(word : String)
 signal next_question
 
-@onready var wrong_word_label = $MarginContainer/VBoxContainer/HBoxContainer/WrongWordLabel
-@onready var right_word_label = $MarginContainer/VBoxContainer/HBoxContainer/RightWordLabel
+@onready var wrong_word_label = %WrongWordLabel
+@onready var right_word_label = %RightWordLabel
 
 var json_as_text = FileAccess.get_file_as_string("res://QuestionList.json")
 var question_dict = JSON.parse_string(json_as_text)

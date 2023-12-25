@@ -4,7 +4,7 @@ extends ColorRect
 @onready var final_score_label = $FinalScoreLabel
 
 func _ready():
-	pass # Replace with function body.
+	visible = false
 
 func _on_game_over(final_score):
 	if final_score > Save.data.high_score:

@@ -1,15 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://drwprlbn4myol"]
+[gd_scene load_steps=19 format=3 uid="uid://drwprlbn4myol"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_xgca8"]
 [ext_resource type="Script" path="res://Scripts/Buttons.gd" id="2_gy3tw"]
 [ext_resource type="Texture2D" uid="uid://b55gdobtm2yqw" path="res://Art/Logo.png" id="3_1osa0"]
+[ext_resource type="Texture2D" uid="uid://cm7huwm3uij0a" path="res://Art/practice_button.png" id="3_yoad4"]
+[ext_resource type="FontFile" uid="uid://b76vbo1u5bcq3" path="res://Fonts/TangoSans/TangoSans_Bold.ttf" id="4_wggei"]
+[ext_resource type="Texture2D" uid="uid://djsiocss20hcx" path="res://Art/test_button.png" id="5_f36bm"]
+[ext_resource type="Texture2D" uid="uid://dqvps2cq2ndao" path="res://Art/extras_button.png" id="6_8vr4e"]
+[ext_resource type="Texture2D" uid="uid://bqsb24brm8a0o" path="res://Art/profile_button.png" id="6_k1c8s"]
 
-[sub_resource type="Gradient" id="Gradient_oamos"]
-colors = PackedColorArray(0.180817, 0.279757, 0.925781, 1, 0.165344, 0.638846, 0.984375, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vavor"]
+texture = ExtResource("3_yoad4")
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_sq4tk"]
-gradient = SubResource("Gradient_oamos")
-fill_from = Vector2(1, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_scb7a"]
+texture = ExtResource("3_yoad4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y5mqt"]
+texture = ExtResource("3_yoad4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v1arv"]
+texture = ExtResource("5_f36bm")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5pw4i"]
+texture = ExtResource("6_8vr4e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ccp2b"]
+texture = ExtResource("6_8vr4e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t0fed"]
+texture = ExtResource("6_8vr4e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3wgae"]
+texture = ExtResource("6_8vr4e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lkpjp"]
+texture = ExtResource("6_8vr4e")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ke40g"]
+texture = ExtResource("6_k1c8s")
+modulate_color = Color(0.917647, 0.917647, 0.917647, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -27,8 +56,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 0.921569, 1)
 
-[node name="Buttons" type="GridContainer" parent="."]
+[node name="Buttons" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -41,18 +71,24 @@ offset_right = 270.0
 offset_bottom = 311.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 2
 script = ExtResource("2_gy3tw")
 
-[node name="StartButton" type="TextureButton" parent="Buttons"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="PracticeButton" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 theme = ExtResource("1_xgca8")
-texture_normal = SubResource("GradientTexture2D_sq4tk")
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_vavor")
+theme_override_styles/hover = SubResource("StyleBoxTexture_scb7a")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_y5mqt")
 
-[node name="MarginContainer" type="MarginContainer" parent="Buttons/StartButton"]
+[node name="MarginContainer" type="MarginContainer" parent="Buttons/VBoxContainer/PracticeButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,20 +96,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xgca8")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
-[node name="Label" type="Label" parent="Buttons/StartButton/MarginContainer"]
+[node name="Label" type="Label" parent="Buttons/VBoxContainer/PracticeButton/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.235294, 0.639216, 0.439216, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("4_wggei")
+theme_override_font_sizes/font_size = 40
 text = "Practice"
 
-[node name="Button2" type="TextureButton" parent="Buttons"]
+[node name="TestButton" type="Button" parent="Buttons/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = SubResource("GradientTexture2D_sq4tk")
-stretch_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_v1arv")
 
-[node name="MarginContainer2" type="MarginContainer" parent="Buttons/Button2"]
+[node name="MarginContainer2" type="MarginContainer" parent="Buttons/VBoxContainer/TestButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,22 +124,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xgca8")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
-[node name="Label" type="Label" parent="Buttons/Button2/MarginContainer2"]
+[node name="Label" type="Label" parent="Buttons/VBoxContainer/TestButton/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.94902, 0.65098, 0.368627, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("4_wggei")
+theme_override_font_sizes/font_size = 40
 text = "Test"
 
-[node name="Button4" type="TextureButton" parent="Buttons"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_neighbor_top = NodePath("../StartButton")
-focus_previous = NodePath("../StartButton")
-texture_normal = SubResource("GradientTexture2D_sq4tk")
-stretch_mode = 0
 
-[node name="MarginContainer3" type="MarginContainer" parent="Buttons/Button4"]
+[node name="ExtrasButton" type="Button" parent="Buttons/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../../VBoxContainer/PracticeButton")
+focus_previous = NodePath("../../VBoxContainer/PracticeButton")
+theme_override_styles/normal = SubResource("StyleBoxTexture_5pw4i")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ccp2b")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_t0fed")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_3wgae")
+theme_override_styles/focus = SubResource("StyleBoxTexture_lkpjp")
+
+[node name="MarginContainer4" type="MarginContainer" parent="Buttons/VBoxContainer2/ExtrasButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,34 +161,53 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_xgca8")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
 
-[node name="Label" type="Label" parent="Buttons/Button4/MarginContainer3"]
+[node name="Label" type="Label" parent="Buttons/VBoxContainer2/ExtrasButton/MarginContainer4"]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Profile"
-
-[node name="Button5" type="TextureButton" parent="Buttons"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-focus_neighbor_top = NodePath("../StartButton")
-focus_previous = NodePath("../StartButton")
-texture_normal = SubResource("GradientTexture2D_sq4tk")
-stretch_mode = 0
-
-[node name="MarginContainer4" type="MarginContainer" parent="Buttons/Button5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_xgca8")
-
-[node name="Label" type="Label" parent="Buttons/Button5/MarginContainer4"]
-layout_mode = 2
-size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.690196, 0.188235, 0.360784, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("4_wggei")
+theme_override_font_sizes/font_size = 40
 text = "Extras"
+
+[node name="ProfileButton" type="Button" parent="Buttons/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+focus_neighbor_top = NodePath("../../VBoxContainer/PracticeButton")
+focus_previous = NodePath("../../VBoxContainer/PracticeButton")
+theme_override_styles/normal = SubResource("StyleBoxTexture_ke40g")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ke40g")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ke40g")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ke40g")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ke40g")
+
+[node name="MarginContainer3" type="MarginContainer" parent="Buttons/VBoxContainer2/ProfileButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xgca8")
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Label" type="Label" parent="Buttons/VBoxContainer2/ProfileButton/MarginContainer3"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_outline_color = Color(0.294118, 0.356863, 0.662745, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("4_wggei")
+theme_override_font_sizes/font_size = 40
+text = "Profile"
 
 [node name="Logo" type="TextureRect" parent="."]
 layout_mode = 1
@@ -149,4 +225,4 @@ grow_vertical = 2
 texture = ExtResource("3_1osa0")
 expand_mode = 1
 
-[connection signal="pressed" from="Buttons/StartButton" to="Buttons" method="_on_start_button_pressed"]
+[connection signal="pressed" from="Buttons/VBoxContainer/PracticeButton" to="Buttons" method="_on_start_button_pressed"]

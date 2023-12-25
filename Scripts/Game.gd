@@ -12,6 +12,7 @@ signal game_over(final_score : int)
 
 @onready var question_label = %QuestionLabel
 @onready var question_end_timer = %QuestionEndTimer
+@onready var answer_buttons = %AnswerButtons
 @onready var game_over_panel = %GameOverPanel
 @onready var incorrect_panel = %IncorrectPanel
 
@@ -76,7 +77,7 @@ func on_question_answered(choice):
 			lives -= 1
 			got_question_wrong = true
 			update_incorrect_panel.emit(question_dict[current_question].options[current_answer], 
-											$AnswerButtons.get_node("Button" + str(choice + 1)).get_node("Label").text)
+											answer_buttons.get_node("Button" + str(choice + 1)).text)
 			AudioManager.play_sound("Incorrect")
 			update_lives.emit(lives)
 		
@@ -88,6 +89,7 @@ func _on_question_end_timer_timeout():
 	question_debounce = false
 	if got_question_wrong:
 		incorrect_panel.visible = true
+		answer_buttons.visible = false
 	else:
 		pick_new_question()
 	

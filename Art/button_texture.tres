@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bow0tc1hbie7q"]
+
+[ext_resource type="Texture2D" uid="uid://dpt3e8ig14qqj" path="res://Art/answer_button.png" id="1_xx0nw"]
+
+[resource]
+texture = ExtResource("1_xx0nw")
+texture_margin_left = 38.0
+texture_margin_top = 36.0
+texture_margin_right = 40.0
+texture_margin_bottom = 39.0
+region_rect = Rect2(0, 0, 565, 115)

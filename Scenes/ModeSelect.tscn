@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmcdq66xuhwr0"]
+[gd_scene load_steps=6 format=3 uid="uid://dmcdq66xuhwr0"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_6gprc"]
 [ext_resource type="Script" path="res://Scripts/ModeSelect.gd" id="2_k0726"]
 [ext_resource type="PackedScene" uid="uid://c67j66s6u7qrf" path="res://Scenes/GamemodePanel.tscn" id="3_pq4du"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tn67p"]
+bg_color = Color(0.560784, 0.870588, 0.364706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7qlo"]
+bg_color = Color(0.560784, 0.870588, 0.364706, 1)
 
 [node name="ModeSelect" type="Control"]
 layout_mode = 3
@@ -34,6 +40,7 @@ theme_override_constants/separation = 0
 
 [node name="Header" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tn67p")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header"]
 layout_mode = 2
@@ -44,6 +51,7 @@ layout_mode = 2
 [node name="BackButton" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_m7qlo")
 text = "<"
 alignment = 0
 

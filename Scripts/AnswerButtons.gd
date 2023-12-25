@@ -5,9 +5,9 @@ signal answer_button_pressed(choice)
 @export var button_template : PackedScene
 
 @export var buttons : Array
-@export var normal_button_texture : Texture2D
-@export var correct_button_texture : Texture2D
-@export var incorrect_button_texture : Texture2D
+@export var normal_button_texture : StyleBoxTexture
+@export var correct_button_texture : StyleBoxTexture
+@export var incorrect_button_texture : StyleBoxTexture
 
 func _ready():
 	buttons.clear()
@@ -23,11 +23,22 @@ func _on_answer_button_pressed(button_number):
 	answer_button_pressed.emit(button_number)
 
 func _update_button_texts(button_texts):
+	visible = true
 	for i in range(buttons.size()):
-		get_node(buttons[i]).get_node("Label").text = str(button_texts[i])
-		get_node(buttons[i]).texture_normal = normal_button_texture
+		get_node(buttons[i]).text = str(button_texts[i])
+		_update_button_style(get_node(buttons[i]), normal_button_texture)
 
+func _update_button_style(button, texture):
+	button.remove_theme_stylebox_override("normal")
+	button.remove_theme_stylebox_override("hover")
+	button.remove_theme_stylebox_override("pressed")
+	print(button.get_draw_mode())
+	button.add_theme_stylebox_override("normal", texture)
+	button.add_theme_stylebox_override("hover", texture)
+	button.add_theme_stylebox_override("pressed", texture)
+	button.add_theme_stylebox_override("focus", texture)
+	button.add_theme_stylebox_override("disabled", texture)
 
 func show_answer(answer_picked, right_answer):
-	get_node(buttons[answer_picked]).texture_normal = incorrect_button_texture
-	get_node(buttons[right_answer]).texture_normal = correct_button_texture
+	_update_button_style(get_node(buttons[answer_picked]), incorrect_button_texture)
+	_update_button_style(get_node(buttons[right_answer]), correct_button_texture)
