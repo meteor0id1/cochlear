@@ -13,13 +13,13 @@ corner_radius_bottom_left = 50
 bg_color = Color(0.164706, 0.431373, 1, 1)
 
 [resource]
-Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_color = Color(1, 1, 0.921569, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-Button/colors/font_focus_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_color = Color(1, 1, 1, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_focus_color = Color(1, 1, 0.921569, 1)
+Button/colors/font_hover_color = Color(1, 1, 0.921569, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 0.921569, 1)
 Button/colors/font_outline_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 0.921569, 1)
 Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
 Button/colors/icon_focus_color = Color(1, 1, 1, 1)
 Button/colors/icon_hover_color = Color(1, 1, 1, 1)
@@ -34,7 +34,7 @@ Button/styles/normal = SubResource("StyleBoxFlat_jlweo")
 GridContainer/constants/h_separation = 12
 GridContainer/constants/v_separation = 12
 HBoxContainer/constants/separation = 12
-Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_color = Color(1, 1, 0.921569, 1)
 Label/font_sizes/font_size = 40
 Label/fonts/font = ExtResource("1_uh82q")
 MarginContainer/constants/margin_bottom = 12

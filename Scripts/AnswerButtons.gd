@@ -29,10 +29,6 @@ func _update_button_texts(button_texts):
 		_update_button_style(get_node(buttons[i]), normal_button_texture)
 
 func _update_button_style(button, texture):
-	button.remove_theme_stylebox_override("normal")
-	button.remove_theme_stylebox_override("hover")
-	button.remove_theme_stylebox_override("pressed")
-	print(button.get_draw_mode())
 	button.add_theme_stylebox_override("normal", texture)
 	button.add_theme_stylebox_override("hover", texture)
 	button.add_theme_stylebox_override("pressed", texture)

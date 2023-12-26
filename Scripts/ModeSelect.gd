@@ -2,22 +2,21 @@ extends Control
 
 signal panel_create
 
-var gamemodes = [
+@export var gamemodes = [
 	{
 		"title" = "Word Match",
 		"high_score" = 0,
+		"texture" = ""
 	},
 	{
 		"title" = "Sentence \nComprehension",
 		"high_score" = 0,
+		"texture" = ""
 	},
 	{
-		"title" = "Word Match",
+		"title" = "Other Thing",
 		"high_score" = 0,
-	},
-	{
-		"title" = "Word Match",
-		"high_score" = 0,
+		"texture" = ""
 	},
 ]
 
@@ -29,6 +28,9 @@ func _ready():
 		var new_panel = gamemode_panel.instantiate()
 		gamemode_container.add_child(new_panel)
 		new_panel.load_info(gamemode.title)
+		var texture = StyleBoxTexture.new()
+		texture.texture = gamemode.texture
+		new_panel.add_theme_stylebox_override("panel", texture)
 
 func _on_back_button_pressed():
 	

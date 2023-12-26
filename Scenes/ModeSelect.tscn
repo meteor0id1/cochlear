@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmcdq66xuhwr0"]
+[gd_scene load_steps=9 format=3 uid="uid://dmcdq66xuhwr0"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_6gprc"]
 [ext_resource type="Script" path="res://Scripts/ModeSelect.gd" id="2_k0726"]
+[ext_resource type="Texture2D" uid="uid://ci7xcc5s185kn" path="res://Art/word_select_panel.png" id="3_km65k"]
 [ext_resource type="PackedScene" uid="uid://c67j66s6u7qrf" path="res://Scenes/GamemodePanel.tscn" id="3_pq4du"]
+[ext_resource type="Texture2D" uid="uid://dvre5bmlhk4bv" path="res://Art/mode_2_panel.png" id="4_o28va"]
+[ext_resource type="Texture2D" uid="uid://ose64hg3uxvd" path="res://Art/mode_3_panel.png" id="5_exclf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tn67p"]
 bg_color = Color(0.560784, 0.870588, 0.364706, 1)
@@ -19,6 +22,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_6gprc")
 script = ExtResource("2_k0726")
+gamemodes = [{
+"high_score": 0,
+"texture": ExtResource("3_km65k"),
+"title": "Word Match"
+}, {
+"high_score": 0,
+"texture": ExtResource("4_o28va"),
+"title": "Sentence 
+Comprehension"
+}, {
+"high_score": 0,
+"texture": ExtResource("5_exclf"),
+"title": "Other Thing"
+}]
 gamemode_panel = ExtResource("3_pq4du")
 
 [node name="Background" type="ColorRect" parent="."]

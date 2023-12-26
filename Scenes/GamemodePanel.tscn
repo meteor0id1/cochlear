@@ -1,29 +1,62 @@
-[gd_scene load_steps=5 format=3 uid="uid://c67j66s6u7qrf"]
+[gd_scene load_steps=11 format=3 uid="uid://c67j66s6u7qrf"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_eaklx"]
 [ext_resource type="Script" path="res://Scripts/GamemodePanel.gd" id="1_mbnqt"]
+[ext_resource type="Texture2D" uid="uid://ci7xcc5s185kn" path="res://Art/word_select_panel.png" id="2_7066a"]
+[ext_resource type="Texture2D" uid="uid://c30x5u4mjvfhh" path="res://Art/easy_button.png" id="4_hq3se"]
+[ext_resource type="Texture2D" uid="uid://spa38lnxvdqs" path="res://Art/medium_button.png" id="5_j20u6"]
+[ext_resource type="Texture2D" uid="uid://cpmad7xs2hmqv" path="res://Art/hard_button.png" id="6_pkbmm"]
 
-[sub_resource type="Gradient" id="Gradient_258is"]
-colors = PackedColorArray(0.363281, 0.641846, 1, 1, 0.378906, 0.781647, 1, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_80l05"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("2_7066a")
+texture_margin_left = 39.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 38.0
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_h6fhv"]
-gradient = SubResource("Gradient_258is")
-fill_from = Vector2(1, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_okmy4"]
+texture = ExtResource("4_hq3se")
+texture_margin_left = 25.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 23.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u6opq"]
+texture = ExtResource("5_j20u6")
+texture_margin_left = 28.0
+texture_margin_top = 26.0
+texture_margin_right = 25.0
+texture_margin_bottom = 23.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b87i6"]
+texture = ExtResource("6_pkbmm")
+texture_margin_left = 27.0
+texture_margin_top = 24.0
+texture_margin_right = 26.0
+texture_margin_bottom = 25.0
+region_rect = Rect2(0, 0, 170, 69)
 
 [node name="GamemodePanel" type="PanelContainer"]
-offset_right = 518.0
-offset_bottom = 264.0
+offset_right = 532.0
+offset_bottom = 225.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 theme = ExtResource("1_eaklx")
+theme_override_styles/panel = SubResource("StyleBoxTexture_80l05")
 script = ExtResource("1_mbnqt")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -31,72 +64,54 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 2.0
-theme_override_font_sizes/font_size = 54
+theme_override_font_sizes/font_size = 40
 text = "Word Match"
+vertical_alignment = 1
 
 [node name="HighScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 text = "High Score: 1000"
-vertical_alignment = 2
+vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="EasyButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="EasyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = SubResource("GradientTexture2D_h6fhv")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/EasyButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_okmy4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_okmy4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_okmy4")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_okmy4")
+theme_override_styles/focus = SubResource("StyleBoxTexture_okmy4")
 text = "Easy"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="MediumButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MediumButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = SubResource("GradientTexture2D_h6fhv")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MediumButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_u6opq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_u6opq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_u6opq")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_u6opq")
+theme_override_styles/focus = SubResource("StyleBoxTexture_u6opq")
 text = "Medium"
-horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="HardButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HardButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = SubResource("GradientTexture2D_h6fhv")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/HardButton"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxTexture_b87i6")
+theme_override_styles/hover = SubResource("StyleBoxTexture_b87i6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b87i6")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_b87i6")
+theme_override_styles/focus = SubResource("StyleBoxTexture_b87i6")
 text = "Hard"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/EasyButton" to="." method="_on_easy_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/MediumButton" to="." method="_on_medium_button_pressed"]
