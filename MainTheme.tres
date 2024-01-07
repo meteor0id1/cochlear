@@ -1,16 +1,51 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bb2trv4dh4mq3"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://bb2trv4dh4mq3"]
 
 [ext_resource type="FontFile" uid="uid://cnabwuwos6o52" path="res://Fonts/TangoSans/TangoSans.ttf" id="1_uh82q"]
+[ext_resource type="FontFile" uid="uid://b76vbo1u5bcq3" path="res://Fonts/TangoSans/TangoSans_Bold.ttf" id="1_yssfm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jlweo"]
-bg_color = Color(0.109804, 0.498039, 0.94902, 1)
+bg_color = Color(0.301961, 0.65098, 1, 1)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25ka2"]
-bg_color = Color(0.164706, 0.431373, 1, 1)
+bg_color = Color(0.301961, 0.65098, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkk5u"]
+bg_color = Color(0.152941, 0.152941, 0.211765, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvh7l"]
+bg_color = Color(1, 0.894118, 0.470588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xga77"]
+bg_color = Color(0.760784, 0.760784, 0.819608, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cli72"]
+bg_color = Color(0.760784, 0.760784, 0.819608, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vdf0j"]
+bg_color = Color(0.760784, 0.760784, 0.819608, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_isw2y"]
+bg_color = Color(0.494118, 0.494118, 0.560784, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [resource]
 Button/colors/font_color = Color(1, 1, 0.921569, 1)
@@ -29,8 +64,12 @@ Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/h_separation = 2
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 40
-Button/fonts/font = ExtResource("1_uh82q")
+Button/fonts/font = ExtResource("1_yssfm")
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
 Button/styles/normal = SubResource("StyleBoxFlat_jlweo")
+Button/styles/pressed = null
 GridContainer/constants/h_separation = 12
 GridContainer/constants/v_separation = 12
 HBoxContainer/constants/separation = 12
@@ -42,4 +81,15 @@ MarginContainer/constants/margin_left = 12
 MarginContainer/constants/margin_right = 12
 MarginContainer/constants/margin_top = 12
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_25ka2")
+ProgressBar/colors/font_color = Color(1, 1, 0.921569, 1)
+ProgressBar/colors/font_outline_color = Color(0.152941, 0.152941, 0.211765, 1)
+ProgressBar/constants/outline_size = 12
+ProgressBar/font_sizes/font_size = 36
+ProgressBar/fonts/font = ExtResource("1_uh82q")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_mkk5u")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_tvh7l")
 VBoxContainer/constants/separation = 12
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_xga77")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_cli72")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_vdf0j")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_isw2y")

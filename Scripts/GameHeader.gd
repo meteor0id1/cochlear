@@ -6,7 +6,7 @@ extends PanelContainer
 
 
 func _on_back_button_pressed():
-	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://Scenes/ModeSelect.tscn")
 
 func _on_game_update_score(score):
 	score_label.text = str(score)

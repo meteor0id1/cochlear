@@ -1,30 +1,32 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcqr4x0yrvs0q"]
+[gd_scene load_steps=16 format=3 uid="uid://mmkrkniv4l8g"]
 
-[ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_4stqg"]
-[ext_resource type="Script" path="res://Scripts/Game.gd" id="2_ji3jl"]
-[ext_resource type="Script" path="res://Scripts/AnswerButtons.gd" id="3_u0lqf"]
-[ext_resource type="Texture2D" uid="uid://dga6wlgpdtf81" path="res://Art/Speaker.png" id="3_unkqt"]
-[ext_resource type="FontFile" uid="uid://b76vbo1u5bcq3" path="res://Fonts/TangoSans/TangoSans_Bold.ttf" id="4_51xcb"]
-[ext_resource type="PackedScene" uid="uid://bljn1ji7ne67m" path="res://Scenes/AnswerButton.tscn" id="5_m8kwy"]
-[ext_resource type="Script" path="res://Scripts/GameHeader.gd" id="6_exvgn"]
-[ext_resource type="Script" path="res://Scripts/GameOverPanel.gd" id="7_fp3hr"]
-[ext_resource type="StyleBox" uid="uid://bow0tc1hbie7q" path="res://Art/button_texture.tres" id="9_o7mru"]
-[ext_resource type="Script" path="res://Scripts/IncorrectPanel.gd" id="9_wa2dr"]
-[ext_resource type="StyleBox" uid="uid://j74mx2hf2y2y" path="res://Art/correct_button_texture.tres" id="10_ijyi5"]
-[ext_resource type="StyleBox" uid="uid://cb1eju0lhb835" path="res://Art/incorrect_button_texture.tres" id="11_du85y"]
+[ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_lgmsg"]
+[ext_resource type="Script" path="res://Scripts/Vowel Identification.gd" id="2_wbp66"]
+[ext_resource type="Script" path="res://Scripts/GameHeader.gd" id="3_tkqb2"]
+[ext_resource type="Texture2D" uid="uid://di02gd6u5jerl" path="res://Art/back_button.png" id="4_b1a5b"]
+[ext_resource type="FontFile" uid="uid://b76vbo1u5bcq3" path="res://Fonts/TangoSans/TangoSans_Bold.ttf" id="5_1hg77"]
+[ext_resource type="Texture2D" uid="uid://dga6wlgpdtf81" path="res://Art/Speaker.png" id="6_joyij"]
+[ext_resource type="Script" path="res://Scripts/AnswerButtons.gd" id="7_1p83o"]
+[ext_resource type="PackedScene" uid="uid://bljn1ji7ne67m" path="res://Scenes/AnswerButton.tscn" id="8_nikui"]
+[ext_resource type="StyleBox" uid="uid://bow0tc1hbie7q" path="res://Art/button_texture.tres" id="9_l7ree"]
+[ext_resource type="StyleBox" uid="uid://j74mx2hf2y2y" path="res://Art/correct_button_texture.tres" id="10_h3kcs"]
+[ext_resource type="StyleBox" uid="uid://cb1eju0lhb835" path="res://Art/incorrect_button_texture.tres" id="11_5fee3"]
+[ext_resource type="Script" path="res://Scripts/IncorrectPanel.gd" id="12_0ka8d"]
+[ext_resource type="Script" path="res://Scripts/GameOverPanel.gd" id="13_6x5gt"]
+[ext_resource type="Script" path="res://Scripts/XPBar.gd" id="14_5askm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t11a"]
 bg_color = Color(1, 1, 0.921569, 1)
 
-[node name="Game" type="Control"]
+[node name="Vowel Identification" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_4stqg")
-script = ExtResource("2_ji3jl")
+theme = ExtResource("1_lgmsg")
+script = ExtResource("2_wbp66")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -45,7 +47,7 @@ grow_vertical = 2
 
 [node name="Header" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
-script = ExtResource("6_exvgn")
+script = ExtResource("3_tkqb2")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header"]
 layout_mode = 2
@@ -53,19 +55,27 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/MarginContainer"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 14
+
+[node name="BackButton" type="TextureButton" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 60
-text = "<"
-alignment = 0
+texture_normal = ExtResource("4_b1a5b")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="ScoreLabel" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("4_51xcb")
+theme_override_fonts/font = ExtResource("5_1hg77")
 theme_override_font_sizes/font_size = 60
 text = "100"
 horizontal_alignment = 1
@@ -75,7 +85,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("4_51xcb")
+theme_override_fonts/font = ExtResource("5_1hg77")
 theme_override_font_sizes/font_size = 60
 text = "<3 5"
 horizontal_alignment = 2
@@ -104,7 +114,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
-texture_normal = ExtResource("3_unkqt")
+texture_normal = ExtResource("6_joyij")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -115,12 +125,12 @@ size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 theme_override_constants/separation = 12
 alignment = 1
-script = ExtResource("3_u0lqf")
-button_template = ExtResource("5_m8kwy")
+script = ExtResource("7_1p83o")
+button_template = ExtResource("8_nikui")
 buttons = [NodePath(""), NodePath(""), NodePath(""), NodePath("")]
-normal_button_texture = ExtResource("9_o7mru")
-correct_button_texture = ExtResource("10_ijyi5")
-incorrect_button_texture = ExtResource("11_du85y")
+normal_button_texture = ExtResource("9_l7ree")
+correct_button_texture = ExtResource("10_h3kcs")
+incorrect_button_texture = ExtResource("11_5fee3")
 
 [node name="IncorrectPanel" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -129,7 +139,7 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_7t11a")
-script = ExtResource("9_wa2dr")
+script = ExtResource("12_0ka8d")
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel"]
 layout_mode = 2
@@ -141,7 +151,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.137255, 0.572549, 0.996078, 1)
-theme_override_fonts/font = ExtResource("4_51xcb")
+theme_override_fonts/font = ExtResource("5_1hg77")
 theme_override_font_sizes/font_size = 60
 text = "Incorrect!"
 horizontal_alignment = 1
@@ -170,7 +180,7 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-texture_normal = ExtResource("3_unkqt")
+texture_normal = ExtResource("6_joyij")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -203,18 +213,18 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
-texture_normal = ExtResource("3_unkqt")
+texture_normal = ExtResource("6_joyij")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/normal = ExtResource("9_o7mru")
-theme_override_styles/hover = ExtResource("9_o7mru")
-theme_override_styles/pressed = ExtResource("9_o7mru")
-theme_override_styles/disabled = ExtResource("9_o7mru")
-theme_override_styles/focus = ExtResource("9_o7mru")
+theme_override_styles/normal = ExtResource("9_l7ree")
+theme_override_styles/hover = ExtResource("9_l7ree")
+theme_override_styles/pressed = ExtResource("9_l7ree")
+theme_override_styles/disabled = ExtResource("9_l7ree")
+theme_override_styles/focus = ExtResource("9_l7ree")
 text = "Continue"
 
 [node name="GameOverPanel" type="ColorRect" parent="."]
@@ -227,7 +237,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 0.921569, 1)
-script = ExtResource("7_fp3hr")
+script = ExtResource("13_6x5gt")
 
 [node name="Label" type="Label" parent="GameOverPanel"]
 layout_mode = 1
@@ -237,13 +247,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -263.0
-offset_top = -163.0
+offset_top = -156.0
 offset_right = 263.0
-offset_bottom = -80.0
+offset_bottom = -73.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
-theme_override_fonts/font = ExtResource("4_51xcb")
+theme_override_colors/font_color = Color(0.494118, 0.494118, 0.560784, 1)
+theme_override_fonts/font = ExtResource("5_1hg77")
 theme_override_font_sizes/font_size = 80
 text = "Game Over!"
 horizontal_alignment = 1
@@ -257,12 +267,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -251.0
-offset_top = -2.0
+offset_top = -11.0
 offset_right = 251.0
-offset_bottom = 68.0
+offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_colors/font_color = Color(0.760784, 0.760784, 0.819608, 1)
 theme_override_font_sizes/font_size = 48
 text = "High Score: 1000"
 horizontal_alignment = 1
@@ -277,12 +287,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -251.0
-offset_top = -74.0
+offset_top = -67.0
 offset_right = 251.0
-offset_bottom = -4.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(0.592157, 0.592157, 0.592157, 1)
+theme_override_colors/font_color = Color(0.760784, 0.760784, 0.819608, 1)
 theme_override_font_sizes/font_size = 48
 text = "Final Score: 1000"
 horizontal_alignment = 1
@@ -303,11 +313,11 @@ offset_bottom = 334.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme_override_styles/normal = ExtResource("9_o7mru")
-theme_override_styles/hover = ExtResource("9_o7mru")
-theme_override_styles/pressed = ExtResource("9_o7mru")
-theme_override_styles/disabled = ExtResource("9_o7mru")
-theme_override_styles/focus = ExtResource("9_o7mru")
+theme_override_styles/normal = ExtResource("9_l7ree")
+theme_override_styles/hover = ExtResource("9_l7ree")
+theme_override_styles/pressed = ExtResource("9_l7ree")
+theme_override_styles/disabled = ExtResource("9_l7ree")
+theme_override_styles/focus = ExtResource("9_l7ree")
 text = "Main Menu"
 
 [node name="RestartButton" type="Button" parent="GameOverPanel"]
@@ -324,12 +334,52 @@ offset_bottom = 201.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-theme_override_styles/normal = ExtResource("10_ijyi5")
-theme_override_styles/hover = ExtResource("10_ijyi5")
-theme_override_styles/pressed = ExtResource("10_ijyi5")
-theme_override_styles/disabled = ExtResource("10_ijyi5")
-theme_override_styles/focus = ExtResource("10_ijyi5")
+theme_override_styles/normal = ExtResource("10_h3kcs")
+theme_override_styles/hover = ExtResource("10_h3kcs")
+theme_override_styles/pressed = ExtResource("10_h3kcs")
+theme_override_styles/disabled = ExtResource("10_h3kcs")
+theme_override_styles/focus = ExtResource("10_h3kcs")
 text = "Try Again"
+
+[node name="XPBar" type="ProgressBar" parent="GameOverPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = 3.0
+offset_right = 254.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+max_value = 20.0
+step = 1.0
+value = 11.0
+script = ExtResource("14_5askm")
+
+[node name="LevelLabel" type="Label" parent="GameOverPanel/XPBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -21.0
+offset_right = 20.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.152941, 0.152941, 0.211765, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 36
+text = "Level 1"
+vertical_alignment = 2
 
 [node name="QuestionEndTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -344,7 +394,7 @@ one_shot = true
 [connection signal="update_incorrect_panel" from="." to="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel" method="update_panel"]
 [connection signal="update_lives" from="." to="VBoxContainer/Header" method="_on_game_update_lives"]
 [connection signal="update_score" from="." to="VBoxContainer/Header" method="_on_game_update_score"]
-[connection signal="pressed" from="VBoxContainer/Header/MarginContainer/HBoxContainer/BackButton" to="VBoxContainer/Header" method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Header/MarginContainer/HBoxContainer/MarginContainer/BackButton" to="VBoxContainer/Header" method="_on_back_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/PlayWordButton" to="." method="_on_play_word_button_pressed"]
 [connection signal="answer_button_pressed" from="VBoxContainer/MarginContainer/VBoxContainer/AnswerButtons" to="." method="on_question_answered"]
 [connection signal="next_question" from="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel" to="." method="pick_new_question"]

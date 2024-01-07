@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgiqmduw780bs"]
+[gd_scene load_steps=3 format=3 uid="uid://cgiqmduw780bs"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_6a45b"]
+[ext_resource type="Texture2D" uid="uid://di02gd6u5jerl" path="res://Art/back_button.png" id="2_o8tnk"]
 
 [node name="Profile" type="Control"]
 layout_mode = 3
@@ -37,15 +38,25 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/MarginContainer"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-text = "<"
-alignment = 0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 14
+
+[node name="BackButton" type="TextureButton" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("2_o8tnk")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 8.0
 theme_override_font_sizes/font_size = 60
 text = "PROFILE"
 vertical_alignment = 1

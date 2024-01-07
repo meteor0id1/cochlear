@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dmcdq66xuhwr0"]
+[gd_scene load_steps=11 format=3 uid="uid://dmcdq66xuhwr0"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_6gprc"]
 [ext_resource type="Script" path="res://Scripts/ModeSelect.gd" id="2_k0726"]
@@ -6,14 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://c67j66s6u7qrf" path="res://Scenes/GamemodePanel.tscn" id="3_pq4du"]
 [ext_resource type="Texture2D" uid="uid://dvre5bmlhk4bv" path="res://Art/mode_2_panel.png" id="4_o28va"]
 [ext_resource type="Texture2D" uid="uid://ose64hg3uxvd" path="res://Art/mode_3_panel.png" id="5_exclf"]
+[ext_resource type="Texture2D" uid="uid://di02gd6u5jerl" path="res://Art/back_button.png" id="7_8s5bn"]
+[ext_resource type="FontFile" uid="uid://b76vbo1u5bcq3" path="res://Fonts/TangoSans/TangoSans_Bold.ttf" id="7_sbkxy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tn67p"]
 bg_color = Color(0.560784, 0.870588, 0.364706, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m7qlo"]
-bg_color = Color(0.560784, 0.870588, 0.364706, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mngyq"]
+bg_color = Color(1, 1, 0.921569, 1)
+border_width_right = 20
+border_color = Color(1, 1, 0.921569, 1)
 
 [node name="ModeSelect" type="Control"]
+custom_minimum_size = Vector2(0, 1000)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,16 +30,15 @@ script = ExtResource("2_k0726")
 gamemodes = [{
 "high_score": 0,
 "texture": ExtResource("3_km65k"),
-"title": "Word Match"
+"title": "Vowel Identification"
 }, {
 "high_score": 0,
 "texture": ExtResource("4_o28va"),
-"title": "Sentence 
-Comprehension"
+"title": "Consonant Identification"
 }, {
 "high_score": 0,
 "texture": ExtResource("5_exclf"),
-"title": "Other Thing"
+"title": "Word Match"
 }]
 gamemode_panel = ExtResource("3_pq4du")
 
@@ -45,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 0.921569, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -65,16 +70,25 @@ layout_mode = 2
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/MarginContainer"]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 60
-theme_override_styles/normal = SubResource("StyleBoxFlat_m7qlo")
-text = "<"
-alignment = 0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 14
+
+[node name="BackButton" type="TextureButton" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_8s5bn")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_stretch_ratio = 8.0
+theme_override_fonts/font = ExtResource("7_sbkxy")
 theme_override_font_sizes/font_size = 60
 text = "PRACTICE"
 vertical_alignment = 1
@@ -83,8 +97,18 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GamemodeContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mngyq")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+scroll_deadzone = 10
 
-[connection signal="pressed" from="VBoxContainer/Header/MarginContainer/HBoxContainer/BackButton" to="." method="_on_back_button_pressed"]
+[node name="GamemodeContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[connection signal="pressed" from="VBoxContainer/Header/MarginContainer/HBoxContainer/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

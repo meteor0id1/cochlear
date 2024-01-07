@@ -11,11 +11,17 @@ signal answer_button_pressed(choice)
 
 func _ready():
 	buttons.clear()
-	for i in range(Controller.difficulty):
+	
+	var num_buttons
+	if Controller.game_mode == "Word Match":
+		num_buttons = Controller.difficulty
+	else:
+		num_buttons = 2
+	
+	for i in range(num_buttons):
 		var new_button = button_template.instantiate()
 		add_child(new_button)
 		new_button.name = "Button" + str(i + 1)
-		var function_to_connect = ""
 		new_button.pressed.connect(_on_answer_button_pressed.bind(i))
 		buttons.append(new_button.get_path())
 

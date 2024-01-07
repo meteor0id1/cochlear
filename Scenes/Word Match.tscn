@@ -1,0 +1,406 @@
+[gd_scene load_steps=16 format=3 uid="uid://dcqr4x0yrvs0q"]
+
+[ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_pa4kd"]
+[ext_resource type="Script" path="res://Scripts/Word Match.gd" id="2_165q6"]
+[ext_resource type="Script" path="res://Scripts/GameHeader.gd" id="3_c7p6y"]
+[ext_resource type="Texture2D" uid="uid://di02gd6u5jerl" path="res://Art/back_button.png" id="4_poafc"]
+[ext_resource type="FontFile" uid="uid://b76vbo1u5bcq3" path="res://Fonts/TangoSans/TangoSans_Bold.ttf" id="5_8xwcw"]
+[ext_resource type="Texture2D" uid="uid://dga6wlgpdtf81" path="res://Art/Speaker.png" id="6_sdd7w"]
+[ext_resource type="Script" path="res://Scripts/AnswerButtons.gd" id="7_i7kim"]
+[ext_resource type="PackedScene" uid="uid://bljn1ji7ne67m" path="res://Scenes/AnswerButton.tscn" id="8_phwvt"]
+[ext_resource type="StyleBox" uid="uid://bow0tc1hbie7q" path="res://Art/button_texture.tres" id="9_iy7a0"]
+[ext_resource type="StyleBox" uid="uid://j74mx2hf2y2y" path="res://Art/correct_button_texture.tres" id="10_tbv8s"]
+[ext_resource type="StyleBox" uid="uid://cb1eju0lhb835" path="res://Art/incorrect_button_texture.tres" id="11_cfm5u"]
+[ext_resource type="Script" path="res://Scripts/IncorrectPanel.gd" id="12_l0a7o"]
+[ext_resource type="Script" path="res://Scripts/GameOverPanel.gd" id="13_oxdsb"]
+[ext_resource type="Script" path="res://Scripts/XPBar.gd" id="14_5n13d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t11a"]
+bg_color = Color(1, 1, 0.921569, 1)
+
+[node name="Word Match" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pa4kd")
+script = ExtResource("2_165q6")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.921569, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Header" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_c7p6y")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Header/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 14
+
+[node name="BackButton" type="TextureButton" parent="VBoxContainer/Header/MarginContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_poafc")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_8xwcw")
+theme_override_font_sizes/font_size = 60
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LivesLabel" type="Label" parent="VBoxContainer/Header/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_8xwcw")
+theme_override_font_sizes/font_size = 60
+text = "<3 5"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="QuestionLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.494118, 0.494118, 0.560784, 1)
+theme_override_font_sizes/font_size = 60
+text = "Choose the matching word"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PlayWordButton" type="TextureButton" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+texture_normal = ExtResource("6_sdd7w")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="AnswerButtons" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_constants/separation = 12
+alignment = 1
+script = ExtResource("7_i7kim")
+button_template = ExtResource("8_phwvt")
+buttons = [NodePath(""), NodePath(""), NodePath(""), NodePath("")]
+normal_button_texture = ExtResource("9_iy7a0")
+correct_button_texture = ExtResource("10_tbv8s")
+incorrect_button_texture = ExtResource("11_cfm5u")
+
+[node name="IncorrectPanel" type="PanelContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7t11a")
+script = ExtResource("12_l0a7o")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.137255, 0.572549, 0.996078, 1)
+theme_override_fonts/font = ExtResource("5_8xwcw")
+theme_override_font_sizes/font_size = 60
+text = "Incorrect!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WrongWordLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.921569, 0.337255, 0.294118, 1)
+text = "WrongWord"
+horizontal_alignment = 1
+
+[node name="WrongWordButton" type="TextureButton" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture_normal = ExtResource("6_sdd7w")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label2" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.768627, 0.768627, 0.768627, 1)
+theme_override_font_sizes/font_size = 60
+text = "
+>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RightWordLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.560784, 0.870588, 0.364706, 1)
+text = "RightWord"
+horizontal_alignment = 1
+
+[node name="RightWordButton" type="TextureButton" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+texture_normal = ExtResource("6_sdd7w")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("9_iy7a0")
+theme_override_styles/hover = ExtResource("9_iy7a0")
+theme_override_styles/pressed = ExtResource("9_iy7a0")
+theme_override_styles/disabled = ExtResource("9_iy7a0")
+theme_override_styles/focus = ExtResource("9_iy7a0")
+text = "Continue"
+
+[node name="GameOverPanel" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 0.921569, 1)
+script = ExtResource("13_oxdsb")
+
+[node name="Label" type="Label" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.0
+offset_top = -156.0
+offset_right = 263.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.494118, 0.494118, 0.560784, 1)
+theme_override_fonts/font = ExtResource("5_8xwcw")
+theme_override_font_sizes/font_size = 80
+text = "Game Over!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HighScoreLabel" type="Label" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -251.0
+offset_top = -11.0
+offset_right = 251.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.760784, 0.760784, 0.819608, 1)
+theme_override_font_sizes/font_size = 48
+text = "High Score: 1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="FinalScoreLabel" type="Label" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -251.0
+offset_top = -67.0
+offset_right = 251.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.760784, 0.760784, 0.819608, 1)
+theme_override_font_sizes/font_size = 48
+text = "Final Score: 1000"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueButton" type="Button" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = 219.0
+offset_right = 199.0
+offset_bottom = 334.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("9_iy7a0")
+theme_override_styles/hover = ExtResource("9_iy7a0")
+theme_override_styles/pressed = ExtResource("9_iy7a0")
+theme_override_styles/disabled = ExtResource("9_iy7a0")
+theme_override_styles/focus = ExtResource("9_iy7a0")
+text = "Main Menu"
+
+[node name="RestartButton" type="Button" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = 85.0
+offset_right = 199.0
+offset_bottom = 201.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("10_tbv8s")
+theme_override_styles/hover = ExtResource("10_tbv8s")
+theme_override_styles/pressed = ExtResource("10_tbv8s")
+theme_override_styles/disabled = ExtResource("10_tbv8s")
+theme_override_styles/focus = ExtResource("10_tbv8s")
+text = "Try Again"
+
+[node name="XPBar" type="ProgressBar" parent="GameOverPanel"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = 3.0
+offset_right = 254.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+max_value = 20.0
+step = 1.0
+value = 11.0
+script = ExtResource("14_5n13d")
+
+[node name="LevelLabel" type="Label" parent="GameOverPanel/XPBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.0
+offset_top = -21.0
+offset_right = 20.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.152941, 0.152941, 0.211765, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 36
+text = "Level 1"
+vertical_alignment = 2
+
+[node name="QuestionEndTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.8
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="game_over" from="." to="GameOverPanel" method="_on_game_over"]
+[connection signal="show_answer" from="." to="VBoxContainer/MarginContainer/VBoxContainer/AnswerButtons" method="show_answer"]
+[connection signal="update_button_texts" from="." to="VBoxContainer/MarginContainer/VBoxContainer/AnswerButtons" method="_update_button_texts"]
+[connection signal="update_incorrect_panel" from="." to="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel" method="update_panel"]
+[connection signal="update_lives" from="." to="VBoxContainer/Header" method="_on_game_update_lives"]
+[connection signal="update_score" from="." to="VBoxContainer/Header" method="_on_game_update_score"]
+[connection signal="pressed" from="VBoxContainer/Header/MarginContainer/HBoxContainer/MarginContainer/BackButton" to="VBoxContainer/Header" method="_on_back_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/PlayWordButton" to="." method="_on_play_word_button_pressed"]
+[connection signal="answer_button_pressed" from="VBoxContainer/MarginContainer/VBoxContainer/AnswerButtons" to="." method="on_question_answered"]
+[connection signal="next_question" from="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel" to="." method="pick_new_question"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/WrongWordButton" to="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel" method="_on_wrong_word_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/RightWordButton" to="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel" method="_on_right_word_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel/MarginContainer/VBoxContainer/ContinueButton" to="VBoxContainer/MarginContainer/VBoxContainer/IncorrectPanel" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/ContinueButton" to="GameOverPanel" method="_on_continue_button_pressed"]
+[connection signal="pressed" from="GameOverPanel/RestartButton" to="GameOverPanel" method="_on_restart_button_pressed"]
+[connection signal="timeout" from="QuestionEndTimer" to="." method="_on_question_end_timer_timeout"]

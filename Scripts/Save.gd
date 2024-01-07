@@ -1,6 +1,10 @@
 extends Node
 
-const SAVE_FILE = "user://save_file1.save"
+var level_reqs = [
+	100, 110, 120, 140, 160, 190, 220, 260, 300, 350, 400, 460, 520, 590, 660, 740, 820, 910, 1000
+]
+
+const SAVE_FILE = "user://save_file3.save"
 var data = {}
 
 func _ready():
@@ -15,6 +19,14 @@ func load_data():
 		var file = FileAccess.open(SAVE_FILE, FileAccess.READ)
 		data = file.get_var()
 	else:
+		print("creating new data")
 		data = {
-			"high_score" = 0
+			"level" = 1,
+			"xp" = 0,
+			high_scores = {
+				"Vowel Identification" = 0,
+				"Consonant Identification" = 0,
+				"Word Match" = 0
+			}
 		}
+		save_data()

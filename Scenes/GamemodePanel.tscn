@@ -13,10 +13,10 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 texture = ExtResource("2_7066a")
-texture_margin_left = 39.0
+texture_margin_left = 40.0
 texture_margin_top = 40.0
 texture_margin_right = 40.0
-texture_margin_bottom = 38.0
+texture_margin_bottom = 40.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_okmy4"]
 texture = ExtResource("4_hq3se")
@@ -41,9 +41,10 @@ texture_margin_bottom = 25.0
 region_rect = Rect2(0, 0, 170, 69)
 
 [node name="GamemodePanel" type="PanelContainer"]
-offset_right = 532.0
+offset_right = 525.0
 offset_bottom = 225.0
 size_flags_horizontal = 3
+mouse_filter = 1
 theme = ExtResource("1_eaklx")
 theme_override_styles/panel = SubResource("StyleBoxTexture_80l05")
 script = ExtResource("1_mbnqt")
@@ -83,35 +84,38 @@ layout_mode = 2
 [node name="EasyButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_okmy4")
 theme_override_styles/hover = SubResource("StyleBoxTexture_okmy4")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_okmy4")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_okmy4")
 theme_override_styles/focus = SubResource("StyleBoxTexture_okmy4")
-text = "Easy"
+text = "Level 1"
 
 [node name="MediumButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_u6opq")
 theme_override_styles/hover = SubResource("StyleBoxTexture_u6opq")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_u6opq")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_u6opq")
 theme_override_styles/focus = SubResource("StyleBoxTexture_u6opq")
-text = "Medium"
+text = "Level 2"
 
 [node name="HardButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxTexture_b87i6")
 theme_override_styles/hover = SubResource("StyleBoxTexture_b87i6")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_b87i6")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_b87i6")
 theme_override_styles/focus = SubResource("StyleBoxTexture_b87i6")
-text = "Hard"
+text = "Level 3"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/EasyButton" to="." method="_on_easy_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/MediumButton" to="." method="_on_medium_button_pressed"]
