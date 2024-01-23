@@ -15,6 +15,7 @@ signal game_over(final_score : int)
 @onready var incorrect_panel = %IncorrectPanel
 
 func _ready():
+	AudioManager.play_background(Controller.difficulty)
 	update_score.emit(score)
 	pick_new_question()
 

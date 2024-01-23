@@ -12,6 +12,8 @@ var question_dict = JSON.parse_string(json_as_text)
 func update_panel(right_answer : String, wrong_answer : String):
 	right_word_label.text = right_answer
 	wrong_word_label.text = wrong_answer
+	
+	AudioManager.pause_background()
 
 func _on_wrong_word_button_pressed():
 	AudioManager.play_word(wrong_word_label.text)
@@ -22,3 +24,4 @@ func _on_right_word_button_pressed():
 func _on_continue_button_pressed():
 	visible = false
 	next_question.emit()
+	AudioManager.resume_background()
