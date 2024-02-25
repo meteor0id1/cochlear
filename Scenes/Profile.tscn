@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgiqmduw780bs"]
+[gd_scene load_steps=4 format=3 uid="uid://cgiqmduw780bs"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_6a45b"]
 [ext_resource type="Texture2D" uid="uid://di02gd6u5jerl" path="res://Art/back_button.png" id="2_o8tnk"]
+
+[sub_resource type="GDScript" id="GDScript_6v4j4"]
+script/source = "extends Control
+
+
+func _on_back_button_pressed():
+	get_tree().change_scene_to_file(\"res://Scenes/MainMenu.tscn\")
+"
 
 [node name="Profile" type="Control"]
 layout_mode = 3
@@ -11,6 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_6a45b")
+script = SubResource("GDScript_6v4j4")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -70,3 +79,10 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 6
+theme_override_colors/font_color = Color(0.152941, 0.152941, 0.211765, 1)
+text = "Coming Soon!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Header/MarginContainer/HBoxContainer/MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

@@ -11,12 +11,12 @@
             xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/">
          <xmp:CreatorTool>Adobe Audition 23.0 (Windows)</xmp:CreatorTool>
          <xmp:CreateDate>2024-01-06T15:22:24-05:00</xmp:CreateDate>
-         <xmp:MetadataDate>2024-01-06T15:53:23-05:00</xmp:MetadataDate>
-         <xmp:ModifyDate>2024-01-06T15:53:23-05:00</xmp:ModifyDate>
+         <xmp:MetadataDate>2024-02-25T07:53:27-05:00</xmp:MetadataDate>
+         <xmp:ModifyDate>2024-02-25T07:53:27-05:00</xmp:ModifyDate>
          <bext:originationDate>2024-01-06</bext:originationDate>
          <bext:originationTime>15:43:14</bext:originationTime>
-         <xmpMM:InstanceID>xmp.iid:bbf2255d-3c34-0443-925a-8dfab66fbd8c</xmpMM:InstanceID>
-         <xmpMM:DocumentID>xmp.did:bbf2255d-3c34-0443-925a-8dfab66fbd8c</xmpMM:DocumentID>
+         <xmpMM:InstanceID>xmp.iid:6a58a7a6-77b9-d54e-b033-05088af744cf</xmpMM:InstanceID>
+         <xmpMM:DocumentID>xmp.did:6a58a7a6-77b9-d54e-b033-05088af744cf</xmpMM:DocumentID>
          <xmpMM:OriginalDocumentID>xmp.did:a1e5ebd7-1e6b-9b4e-af2a-dbe59bccbeaf</xmpMM:OriginalDocumentID>
          <xmpMM:History>
             <rdf:Seq>
@@ -69,11 +69,32 @@
                   <stEvt:softwareAgent>Adobe Audition 23.0 (Windows)</stEvt:softwareAgent>
                   <stEvt:changed>/</stEvt:changed>
                </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stEvt:action>saved</stEvt:action>
+                  <stEvt:instanceID>xmp.iid:8147d613-831f-a247-91a5-1adc996eba0c</stEvt:instanceID>
+                  <stEvt:when>2024-02-25T07:53:02-05:00</stEvt:when>
+                  <stEvt:softwareAgent>Adobe Audition 24.0 (Windows)</stEvt:softwareAgent>
+                  <stEvt:changed>/metadata</stEvt:changed>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stEvt:action>saved</stEvt:action>
+                  <stEvt:instanceID>xmp.iid:79452656-117b-b94f-aa6c-0b629e74a3ad</stEvt:instanceID>
+                  <stEvt:when>2024-02-25T07:53:27-05:00</stEvt:when>
+                  <stEvt:softwareAgent>Adobe Audition 24.0 (Windows)</stEvt:softwareAgent>
+                  <stEvt:changed>/metadata</stEvt:changed>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stEvt:action>saved</stEvt:action>
+                  <stEvt:instanceID>xmp.iid:6a58a7a6-77b9-d54e-b033-05088af744cf</stEvt:instanceID>
+                  <stEvt:when>2024-02-25T07:53:27-05:00</stEvt:when>
+                  <stEvt:softwareAgent>Adobe Audition 24.0 (Windows)</stEvt:softwareAgent>
+                  <stEvt:changed>/</stEvt:changed>
+               </rdf:li>
             </rdf:Seq>
          </xmpMM:History>
          <xmpMM:DerivedFrom rdf:parseType="Resource">
-            <stRef:instanceID>xmp.iid:793a0b02-2a4b-4143-8f49-79aa8d2d9257</stRef:instanceID>
-            <stRef:documentID>xmp.did:793a0b02-2a4b-4143-8f49-79aa8d2d9257</stRef:documentID>
+            <stRef:instanceID>xmp.iid:79452656-117b-b94f-aa6c-0b629e74a3ad</stRef:instanceID>
+            <stRef:documentID>xmp.did:bbf2255d-3c34-0443-925a-8dfab66fbd8c</stRef:documentID>
             <stRef:originalDocumentID>xmp.did:a1e5ebd7-1e6b-9b4e-af2a-dbe59bccbeaf</stRef:originalDocumentID>
          </xmpMM:DerivedFrom>
          <dc:format>audio/ogg; codec="vorbis"</dc:format>
@@ -83,6 +104,23 @@
                   <xmpDM:trackName>CuePoint Markers</xmpDM:trackName>
                   <xmpDM:trackType>Cue</xmpDM:trackType>
                   <xmpDM:frameRate>f48000</xmpDM:frameRate>
+                  <xmpDM:markers>
+                     <rdf:Seq>
+                        <rdf:li rdf:parseType="Resource">
+                           <xmpDM:startTime>0</xmpDM:startTime>
+                           <xmpDM:name>Marker 01</xmpDM:name>
+                           <xmpDM:cuePointParams>
+                              <rdf:Seq>
+                                 <rdf:li rdf:parseType="Resource">
+                                    <xmpDM:key>marker_guid</xmpDM:key>
+                                    <xmpDM:value>xmp:id:fdd807d0-36d8-514b-9916-57d633c107b7</xmpDM:value>
+                                 </rdf:li>
+                              </rdf:Seq>
+                           </xmpDM:cuePointParams>
+                           <xmpDM:guid>xmp:id:fdd807d0-36d8-514b-9916-57d633c107b7</xmpDM:guid>
+                        </rdf:li>
+                     </rdf:Seq>
+                  </xmpDM:markers>
                </rdf:li>
                <rdf:li rdf:parseType="Resource">
                   <xmpDM:trackName>CD Track Markers</xmpDM:trackName>

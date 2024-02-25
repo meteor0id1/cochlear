@@ -11,11 +11,11 @@
             xmlns:xmpDM="http://ns.adobe.com/xmp/1.0/DynamicMedia/">
          <xmp:CreatorTool>Adobe Audition 23.0 (Windows)</xmp:CreatorTool>
          <xmp:CreateDate>2024-01-06T15:22:24-05:00</xmp:CreateDate>
-         <xmp:MetadataDate>2024-01-06T16:26:36-05:00</xmp:MetadataDate>
-         <xmp:ModifyDate>2024-01-06T16:26:36-05:00</xmp:ModifyDate>
-         <bext:originationDate>2024-01-06</bext:originationDate>
-         <bext:originationTime>16:16:27</bext:originationTime>
-         <xmpMM:InstanceID>xmp.iid:3e2dc67f-a2b7-934a-9cc1-6146f1b1de2a</xmpMM:InstanceID>
+         <xmp:MetadataDate>2024-02-25T07:54:08-05:00</xmp:MetadataDate>
+         <xmp:ModifyDate>2024-02-25T07:54:08-05:00</xmp:ModifyDate>
+         <bext:originationDate>2024-02-25</bext:originationDate>
+         <bext:originationTime>07:39:01</bext:originationTime>
+         <xmpMM:InstanceID>xmp.iid:313aba18-e614-2445-bca2-5dd349ccd4bf</xmpMM:InstanceID>
          <xmpMM:DocumentID>xmp.did:3e2dc67f-a2b7-934a-9cc1-6146f1b1de2a</xmpMM:DocumentID>
          <xmpMM:OriginalDocumentID>xmp.did:a1e5ebd7-1e6b-9b4e-af2a-dbe59bccbeaf</xmpMM:OriginalDocumentID>
          <xmpMM:History>
@@ -67,6 +67,20 @@
                   <stEvt:instanceID>xmp.iid:3e2dc67f-a2b7-934a-9cc1-6146f1b1de2a</stEvt:instanceID>
                   <stEvt:when>2024-01-06T16:26:36-05:00</stEvt:when>
                   <stEvt:softwareAgent>Adobe Audition 23.0 (Windows)</stEvt:softwareAgent>
+                  <stEvt:changed>/</stEvt:changed>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stEvt:action>saved</stEvt:action>
+                  <stEvt:instanceID>xmp.iid:0f928a67-d0b7-9946-ba12-eb23004e5f48</stEvt:instanceID>
+                  <stEvt:when>2024-02-25T07:54:08-05:00</stEvt:when>
+                  <stEvt:softwareAgent>Adobe Audition 24.0 (Windows)</stEvt:softwareAgent>
+                  <stEvt:changed>/metadata</stEvt:changed>
+               </rdf:li>
+               <rdf:li rdf:parseType="Resource">
+                  <stEvt:action>saved</stEvt:action>
+                  <stEvt:instanceID>xmp.iid:313aba18-e614-2445-bca2-5dd349ccd4bf</stEvt:instanceID>
+                  <stEvt:when>2024-02-25T07:54:08-05:00</stEvt:when>
+                  <stEvt:softwareAgent>Adobe Audition 24.0 (Windows)</stEvt:softwareAgent>
                   <stEvt:changed>/</stEvt:changed>
                </rdf:li>
             </rdf:Seq>

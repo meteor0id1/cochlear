@@ -44,14 +44,17 @@ func play_background(id):
 	audio_player.play()
 
 func pause_background():
-	current_background.stop()
+	if current_background:
+		current_background.stop()
 
 func resume_background():
-	current_background.play()
+	if current_background:
+		current_background.play()
 
 func stop_background():
-	current_background.queue_free()
-	current_background = null
+	if current_background:
+		current_background.queue_free()
+		current_background = null
 
 func delete_player(audio_player):
 	audio_player.queue_free()
