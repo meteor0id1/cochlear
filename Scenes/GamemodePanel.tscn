@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c67j66s6u7qrf"]
+[gd_scene load_steps=16 format=3 uid="uid://c67j66s6u7qrf"]
 
 [ext_resource type="Theme" uid="uid://bb2trv4dh4mq3" path="res://MainTheme.tres" id="1_eaklx"]
 [ext_resource type="Script" path="res://Scripts/GamemodePanel.gd" id="1_mbnqt"]
@@ -17,6 +17,21 @@ texture_margin_left = 40.0
 texture_margin_top = 40.0
 texture_margin_right = 40.0
 texture_margin_bottom = 40.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrqhv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_07tht"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0oii4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qhdh8"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7bo2a"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_okmy4"]
 texture = ExtResource("4_hq3se")
@@ -59,7 +74,10 @@ theme_override_constants/margin_bottom = 20
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -69,10 +87,20 @@ theme_override_font_sizes/font_size = 40
 text = "Word Match"
 vertical_alignment = 1
 
+[node name="HelpButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_eaklx")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nrqhv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_07tht")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_0oii4")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qhdh8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7bo2a")
+text = " ? "
+
 [node name="HighScoreLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
 text = "High Score: 1000"
@@ -117,6 +145,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_b87i6")
 theme_override_styles/focus = SubResource("StyleBoxTexture_b87i6")
 text = "Level 3"
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer2/HelpButton" to="." method="_on_help_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/EasyButton" to="." method="_on_easy_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/MediumButton" to="." method="_on_medium_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/HardButton" to="." method="_on_hard_button_pressed"]

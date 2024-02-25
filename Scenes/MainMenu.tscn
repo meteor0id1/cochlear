@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://djsiocss20hcx" path="res://Art/test_button.png" id="5_f36bm"]
 [ext_resource type="Texture2D" uid="uid://dqvps2cq2ndao" path="res://Art/extras_button.png" id="6_8vr4e"]
 [ext_resource type="Texture2D" uid="uid://bqsb24brm8a0o" path="res://Art/profile_button.png" id="6_k1c8s"]
-[ext_resource type="Script" path="res://Scripts/XPBar.gd" id="8_diicm"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vavor"]
 texture = ExtResource("3_yoad4")
@@ -40,6 +39,20 @@ texture = ExtResource("6_8vr4e")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ke40g"]
 texture = ExtResource("6_k1c8s")
 modulate_color = Color(0.917647, 0.917647, 0.917647, 1)
+
+[sub_resource type="GDScript" id="GDScript_vfr6n"]
+script/source = "extends ProgressBar
+
+@onready var level_label = %LevelLabel
+
+func _update_xp_bar():
+	level_label.text = \"Level \" + str(Save.data.level)
+	value = Save.data.xp
+	max_value = Save.level_reqs[Save.data.level]
+
+func _ready():
+	_update_xp_bar()
+"
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -232,7 +245,7 @@ theme_override_font_sizes/font_size = 36
 max_value = 20.0
 step = 1.0
 value = 11.0
-script = ExtResource("8_diicm")
+script = SubResource("GDScript_vfr6n")
 
 [node name="LevelLabel" type="Label" parent="XPBar"]
 unique_name_in_owner = true
@@ -272,7 +285,6 @@ expand_mode = 1
 stretch_mode = 5
 
 [connection signal="pressed" from="Buttons/VBoxContainer/PracticeButton" to="." method="_on_practice_button_pressed"]
-[connection signal="pressed" from="Buttons/VBoxContainer/PracticeButton" to="Buttons" method="_on_start_button_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer/TestButton" to="." method="_on_test_button_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer2/ExtrasButton" to="." method="_on_extras_button_pressed"]
 [connection signal="pressed" from="Buttons/VBoxContainer2/ProfileButton" to="." method="_on_profile_button_pressed"]

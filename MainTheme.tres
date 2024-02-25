@@ -70,6 +70,7 @@ Button/styles/focus = null
 Button/styles/hover = null
 Button/styles/normal = SubResource("StyleBoxFlat_jlweo")
 Button/styles/pressed = null
+ButtonTransparent/base_type = &"Button"
 GridContainer/constants/h_separation = 12
 GridContainer/constants/v_separation = 12
 HBoxContainer/constants/separation = 12

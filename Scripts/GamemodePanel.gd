@@ -1,5 +1,7 @@
 extends PanelContainer
 
+signal show_help(gamemode)
+
 @onready var high_score_label = %HighScoreLabel
 @onready var title_label = %TitleLabel
 
@@ -22,3 +24,6 @@ func _on_hard_button_pressed():
 	Controller.game_mode = title_label.text
 	Controller.difficulty = 4
 	Controller.load_game()
+
+func _on_help_button_pressed():
+	show_help.emit(title_label.text)
